@@ -3,16 +3,21 @@ using WebAppDemo.Models;
 using WebAppDemo.DTOs;
 using WebAppDemo.DTOs.Resposes;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+// using WebAppDemo.Hubs;
+using Microsoft.AspNetCore.SignalR;
 
 namespace WebAppDemo.Services.Student_Subject
 {
     public class StudentSubjectService : IStudentSubjectService
     {
+        
         private readonly ApplicationDbContext context;
-
-        public StudentSubjectService(ApplicationDbContext applicationDbContext)
-        {
+        
+        public StudentSubjectService( ApplicationDbContext applicationDbContext)
+         {
+            
             context = applicationDbContext;
+          
         }
 
         public BaseResponse CreateStudentSubject(CreateStudentSubjectRequest request)
@@ -58,13 +63,15 @@ namespace WebAppDemo.Services.Student_Subject
                 Student_SubjectModel newStudentSubject = new Student_SubjectModel
                 {
                     sub_id = request.sub_id,
-                    student_id = request.student_id
+                    student_id = request.student_id,
+                    marks = request.marks
                 };
 
                 // Add and save changes
                 context.Add(newStudentSubject);
                 context.SaveChanges();
 
+                
                 response = new BaseResponse
                 {
                     status_code = StatusCodes.Status200OK,

@@ -1,20 +1,27 @@
-﻿using WebAppDemo.DTOs.Requests;
+﻿using Microsoft.AspNetCore.SignalR;
+using WebAppDemo.DTOs.Requests;
 using WebAppDemo.DTOs.Resposes;
+// using WebAppDemo.Hubs;
 using WebAppDemo.Models;
+using WebAppDemo.Services.HubService;
 
 namespace WebAppDemo.Services.SubjectService
 {
     public class SubjectService : ISubjectService
     {
         private readonly ApplicationDbContext context;
+        private readonly IHubContext<NotificationHub> hubContext;
+        private readonly INotificationService notificationService;
 
-        public SubjectService(ApplicationDbContext applicationDbContext)
+        public SubjectService(ApplicationDbContext applicationDbContext, IHubContext<NotificationHub> notificationHubContext, INotificationService notificationHubService)
         {
             context = applicationDbContext;
+            hubContext = notificationHubContext;
+            notificationService = notificationHubService;
         }
 
 
-        public BaseResponse CreateSubject(CreateSubjectRequest request)
+        public async Task <BaseResponse> CreateSubject(CreateSubjectRequest request)
         {
             BaseResponse response;
 
@@ -23,10 +30,13 @@ namespace WebAppDemo.Services.SubjectService
                 SubjectModel newSubject = new SubjectModel
                 {
                     subject_name = request.subject_name 
-                 };
+                };
 
                 context.Add(newSubject);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
+
+                // Trigger notification when a new subject is created
+                await notificationService.SendNotificationOnSubjectCreated();
 
                 response = new BaseResponse
                 {

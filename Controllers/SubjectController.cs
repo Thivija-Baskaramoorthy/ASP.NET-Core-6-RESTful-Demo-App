@@ -22,7 +22,7 @@ namespace WebAppDemo.Controllers
 
         // end points
         [HttpPost("save")]
-        public BaseResponse CreateSubject(CreateSubjectRequest request)
+        public Task <BaseResponse> CreateSubject(CreateSubjectRequest request)
         {
             return subjectService.CreateSubject(request);
         }

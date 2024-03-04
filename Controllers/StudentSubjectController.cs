@@ -25,19 +25,19 @@ namespace WebAppDemo.Controllers
             return studentSubjectService.CreateStudentSubject(request);
         }
 
-        [HttpPut("{student_id}/{sub_id}")]
+        [HttpPut("update")]
         public BaseResponse UpdateStudentSubjectMarksById(long student_id, long sub_id ,  UpdateStudentSubjectRequest request)
         {
             return studentSubjectService.UpdateStudentSubjectMarksById(student_id, sub_id, request);
         }
 
-        [HttpGet("enrolled-subjects/{student_id}")]
+        [HttpGet("enrolled-subjects")]
         public BaseResponse GetEnrolledSubjectsbyId(long student_id)
         {
             return studentSubjectService.GetEnrolledSubjectsbyId(student_id);
         }
 
-        [HttpGet("average/{student_id}")]
+        [HttpGet("average")]
         public BaseResponse FindAverageOfAStudentbyId(long student_id)
         {
             return studentSubjectService.FindAverageOfAStudentbyId(student_id);

@@ -19,7 +19,6 @@ namespace WebAppDemo.Services.StudentService
         public BaseResponse CreateStudent(CreateStudentRequest request)
         {
             BaseResponse response;
-
             try
             {
                 StudentModel newStudent = new StudentModel

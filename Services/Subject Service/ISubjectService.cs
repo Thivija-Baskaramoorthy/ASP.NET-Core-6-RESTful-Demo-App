@@ -5,6 +5,6 @@ namespace WebAppDemo.Services.SubjectService
 {
     public interface ISubjectService
     {
-        BaseResponse CreateSubject(CreateSubjectRequest request);
+        Task <BaseResponse> CreateSubject(CreateSubjectRequest request);
     }
 }
