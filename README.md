@@ -4,4 +4,4 @@ A simple REST API application with CRUD operations
 This application includes
   - SignalR implemented
   - Email Notification Enabled with MailKit
-  -
+  
