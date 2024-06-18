@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using System.Collections.Concurrent;
 using System.Runtime.CompilerServices;
-using WebAppDemo.Services.ClientConnectionService;
 using WebAppDemo.Services.HubService;
+using WebAppDemo.Services.HubService.ClientConnectionService;
 
 public class NotificationHub : Hub
 {
@@ -29,10 +29,10 @@ public class NotificationHub : Hub
         await _clientConnectionService.GetConnectionIdByClientId(clientId);
 
         await _notificationService.SendOneClient("thivija");
-        
+        // await _notificationService.SendAll();
+
         await base.OnConnectedAsync();
 
-        
     }
 
     public override async Task OnDisconnectedAsync(Exception exception)

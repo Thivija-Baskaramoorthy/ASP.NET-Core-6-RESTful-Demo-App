@@ -4,7 +4,8 @@ namespace WebAppDemo.DTOs
 {
     public class StudentDTO
     {
-        internal long student_id;
+        [Required]
+        public long student_id {  get; set; } 
 
         [Required]
         public string first_name { get; set; }

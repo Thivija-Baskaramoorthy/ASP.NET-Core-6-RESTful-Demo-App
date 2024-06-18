@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WebAppDemo.DTOs.Requests;
 using WebAppDemo.DTOs.Resposes;
+using WebAppDemo.Services.Email_Service;
 using WebAppDemo.Services.StudentService;
 using WebAppDemo.Services.SubjectService;
 
@@ -26,5 +27,13 @@ namespace WebAppDemo.Controllers
         {
             return subjectService.CreateSubject(request);
         }
+
+
+        [HttpPost("test-SendEmail")]
+        public BaseResponse SendTestMail()
+        {
+            return subjectService.SendTestMail();
+        }
+
     }
 }

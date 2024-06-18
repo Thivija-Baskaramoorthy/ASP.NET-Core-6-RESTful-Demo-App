@@ -23,6 +23,7 @@ namespace WebAppDemo.Services.StudentService
             {
                 StudentModel newStudent = new StudentModel
                 {
+
                     first_name = request.first_name,
                     last_name = request.last_name,
                     address = request.address,

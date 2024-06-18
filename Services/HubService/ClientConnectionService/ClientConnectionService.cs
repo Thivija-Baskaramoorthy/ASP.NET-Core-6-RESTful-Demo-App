@@ -4,8 +4,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using WebAppDemo.DTOs.Resposes;
 
-
-namespace WebAppDemo.Services.ClientConnectionService
+namespace WebAppDemo.Services.HubService.ClientConnectionService
 {
     public class ClientConnectionService : IClientConnectionService
     {
@@ -23,20 +22,20 @@ namespace WebAppDemo.Services.ClientConnectionService
             if (MyClients.ContainsKey(clientId))
             {
                 MyClients[clientId] = connectionId;
-                return true; 
+                return true;
             }
             else
             {
                 MyClients.TryAdd(clientId, connectionId);
-                return false; 
+                return false;
             }
         }
 
         public async Task RemoveConnection(string clientId)
         {
-            if (!string.IsNullOrEmpty (clientId))
+            if (!string.IsNullOrEmpty(clientId))
             {
-                MyClients.TryRemove(clientId,out _);
+                MyClients.TryRemove(clientId, out _);
             }
         }
 
@@ -48,7 +47,7 @@ namespace WebAppDemo.Services.ClientConnectionService
             }
             else
             {
-                return null; 
+                return null;
             }
         }
     }

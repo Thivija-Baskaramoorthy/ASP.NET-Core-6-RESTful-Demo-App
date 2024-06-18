@@ -15,10 +15,10 @@ namespace WebAppDemo.DTOs.Resposes
 
 
             public void CreateResponse(HttpStatusCode statusCode, object data)
-        {
-            status_code =( int)statusCode;
-            this.data = data;
+            {
+                 status_code =( int)statusCode;
+                this.data = data;
 
-        }
+            }
     }
 }

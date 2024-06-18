@@ -6,7 +6,7 @@ namespace WebAppDemo.Services.HubService
     {
         Task SendNotificationOnSubjectCreated();
        
-        // public  Task SendAll();
+        public  Task SendAll();
 
         public  Task SendOneClient(string clientId);
 

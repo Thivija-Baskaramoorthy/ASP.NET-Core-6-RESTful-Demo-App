@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using WebAppDemo.DTOs.Resposes;
-using WebAppDemo.Services.ClientConnectionService;
+using WebAppDemo.Services.HubService.ClientConnectionService;
 // using WebAppDemo.Hubs;
 
 namespace WebAppDemo.Services.HubService
@@ -20,7 +20,6 @@ namespace WebAppDemo.Services.HubService
 
         }
 
-
         public async Task SendNotificationOnSubjectCreated()
         {
             BaseHub<string> notificationOnSubjectCreated = new BaseHub<string>();
@@ -28,13 +27,13 @@ namespace WebAppDemo.Services.HubService
             await hubContext.Clients.All.SendAsync("SendNotification",notificationOnSubjectCreated.notification);
             
         }
-/*
+
         public async Task SendAll()
         {
             BaseHub<string> notificationToSendAll = new BaseHub<string>();
             notificationToSendAll.notification = "Connection Established";
             await hubContext.Clients.All.SendAsync("SendNotification", notificationToSendAll.notification);
-        }*/
+        }
 
         public async Task SendOneClient( string clientId)
         {

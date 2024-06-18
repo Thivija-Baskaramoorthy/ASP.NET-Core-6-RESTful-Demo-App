@@ -6,5 +6,6 @@ namespace WebAppDemo.Services.SubjectService
     public interface ISubjectService
     {
         Task <BaseResponse> CreateSubject(CreateSubjectRequest request);
+        public BaseResponse SendTestMail();
     }
 }

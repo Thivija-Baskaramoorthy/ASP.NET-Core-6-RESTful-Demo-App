@@ -1,4 +1,4 @@
-﻿namespace WebAppDemo.Services.ClientConnectionService
+﻿namespace WebAppDemo.Services.HubService.ClientConnectionService
 {
     public interface IClientConnectionService
     {
